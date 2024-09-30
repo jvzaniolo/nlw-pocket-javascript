@@ -1,8 +1,8 @@
-import { createPool } from '@vercel/postgres'
+import { createClient } from '@vercel/postgres'
 import { drizzle } from 'drizzle-orm/vercel-postgres'
 import * as schema from './schema'
 
-export const sql = createPool({
+export const sql = createClient({
 	connectionString: process.env.POSTGRES_URL,
 })
 
