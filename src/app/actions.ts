@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import { createGoal } from '#src/data/functions/create-goal'
@@ -17,5 +18,6 @@ export async function registerGoal(state: unknown, formData: FormData) {
 		desiredWeeklyFrequency,
 	})
 
+	revalidatePath('/')
 	redirect('/')
 }

@@ -9,7 +9,6 @@ interface CreateGoalCompletionRequest {
 }
 
 export async function createGoalCompletion({ goalId }: CreateGoalCompletionRequest) {
-	console.log('createGoalCompletion', { goalId })
 	const firstDayOfWeek = dayjs().startOf('week').toDate()
 	const lastDayOfWeek = dayjs().endOf('week').toDate()
 
