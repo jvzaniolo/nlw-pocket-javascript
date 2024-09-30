@@ -1,12 +1,13 @@
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import { button } from '#src/components/ui/button'
+import { WeeklySummary } from '#src/components/weekly-summary'
 import { getWeekSummary } from '#src/data/functions/get-week-summary'
 
 export default async function Home() {
 	const { summary } = await getWeekSummary()
 
-	return <EmptyGoals />
+	return summary.total > 0 ? <WeeklySummary summary={summary} /> : <EmptyGoals />
 }
 
 function EmptyGoals() {

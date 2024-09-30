@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
 	--font-family-sans: var(--font-inter-tight);

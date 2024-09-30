@@ -30,4 +30,10 @@ async function seed() {
 	])
 }
 
-seed().finally(() => client.end())
+seed()
+	.then(() => {
+		console.log('🌱 Database seeded successfully!')
+	})
+	.finally(() => {
+		client.end()
+	})
