@@ -68,7 +68,7 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 
 								<ul className="space-y-3">
 									{goals.map((goal) => {
-										const parsedTime = dayjs(goal.createdAt).format('HH:mm[h]')
+										const parsedTime = dayjs(goal.completedAt).format('HH:mm[h]')
 
 										return (
 											<li className="flex items-center gap-2" key={goal.id}>

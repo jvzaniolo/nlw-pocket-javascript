@@ -14,18 +14,18 @@ export async function PendingGoals() {
 	}
 
 	return (
-		<form action={completeGoal} className="flex flex-wrap gap-3">
+		<div className="flex flex-wrap gap-3">
 			{pendingGoals.map((goal) => {
 				return (
-					<span key={goal.id}>
+					<form action={completeGoal} key={goal.id}>
 						<input type="hidden" name="goalId" value={goal.id} className="sr-only" />
 						<OutlineButton disabled={goal.completionCount >= goal.desiredWeeklyFrequency}>
 							<Plus className="size-4 text-zinc-600" />
 							{goal.title}
 						</OutlineButton>
-					</span>
+					</form>
 				)
 			})}
-		</form>
+		</div>
 	)
 }

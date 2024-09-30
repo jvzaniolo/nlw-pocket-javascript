@@ -1,5 +1,6 @@
+import { sql } from '@vercel/postgres'
 import dayjs from 'dayjs'
-import { db, sql } from './drizzle'
+import { db } from './drizzle'
 import { goalCompletions, goals } from './schema'
 
 async function seed() {

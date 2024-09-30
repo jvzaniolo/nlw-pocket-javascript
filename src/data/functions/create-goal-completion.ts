@@ -1,31 +1,30 @@
 import dayjs from 'dayjs'
-import weekOfYear from 'dayjs/plugin/weekOfYear'
-import { and, eq, sql } from 'drizzle-orm'
+import { and, count, eq, gte, lte } from 'drizzle-orm'
+import { sql } from 'drizzle-orm'
 import { db } from '#src/db/drizzle'
 import { goalCompletions, goals } from '#src/db/schema'
-
-dayjs.extend(weekOfYear)
 
 interface CreateGoalCompletionRequest {
 	goalId: string
 }
 
 export async function createGoalCompletion({ goalId }: CreateGoalCompletionRequest) {
-	const currentYear = dayjs().year()
-	const currentWeek = dayjs().week()
+	console.log('createGoalCompletion', { goalId })
+	const firstDayOfWeek = dayjs().startOf('week').toDate()
+	const lastDayOfWeek = dayjs().endOf('week').toDate()
 
 	const goalCompletionCounts = db.$with('goal_completion_counts').as(
 		db
 			.select({
 				goalId: goalCompletions.goalId,
-				completionCount: sql`COUNT(${goalCompletions.id})`.as('completionCount'),
+				completionCount: count(goalCompletions.id).as('completionCount'),
 			})
 			.from(goalCompletions)
 			.where(
 				and(
-					eq(goalCompletions.goalId, goalId),
-					sql`EXTRACT(YEAR FROM ${goalCompletions.createdAt}) = ${currentYear}`,
-					sql`EXTRACT(WEEK FROM ${goalCompletions.createdAt}) = ${currentWeek}`
+					gte(goalCompletions.createdAt, firstDayOfWeek),
+					lte(goalCompletions.createdAt, lastDayOfWeek),
+					eq(goalCompletions.goalId, goalId)
 				)
 			)
 			.groupBy(goalCompletions.goalId)
@@ -34,27 +33,24 @@ export async function createGoalCompletion({ goalId }: CreateGoalCompletionReque
 	const result = await db
 		.with(goalCompletionCounts)
 		.select({
-			isIncomplete: sql /*sql*/`
-        COALESCE(${goals.desiredWeeklyFrequency}, 0) > COALESCE(${goalCompletionCounts.completionCount}, 0)
-      `,
+			desiredWeeklyFrequency: goals.desiredWeeklyFrequency,
+			completionCount: sql /*sql*/`
+        COALESCE(${goalCompletionCounts.completionCount}, 0)
+      `.mapWith(Number),
 		})
 		.from(goals)
-		.leftJoin(goalCompletionCounts, eq(goals.id, goalCompletionCounts.goalId))
+		.leftJoin(goalCompletionCounts, eq(goalCompletionCounts.goalId, goals.id))
 		.where(eq(goals.id, goalId))
 		.limit(1)
 
-	const { isIncomplete } = result[0]
+	const { completionCount, desiredWeeklyFrequency } = result[0]
 
-	if (!isIncomplete) {
+	if (completionCount >= desiredWeeklyFrequency) {
 		throw new Error('Goal already completed this week!')
 	}
 
-	const [goalCompletion] = await db
-		.insert(goalCompletions)
-		.values({
-			goalId,
-		})
-		.returning()
+	const insertResult = await db.insert(goalCompletions).values({ goalId }).returning()
+	const goalCompletion = insertResult[0]
 
 	return {
 		goalCompletion,
