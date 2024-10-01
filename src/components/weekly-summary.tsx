@@ -1,12 +1,15 @@
 import dayjs from 'dayjs'
+import ptBR from 'dayjs/locale/pt-br'
 import { CheckCircle2, Plus } from 'lucide-react'
-import Link from 'next/link'
 import type { getWeekSummary } from '#src/data/functions/get-week-summary'
 import { InOrbitIcon } from './in-orbit-icon'
 import { PendingGoals } from './pending-goals'
-import { button } from './ui/button'
+import { Button } from './ui/button'
+import { DialogTrigger } from './ui/dialog'
 import { Progress, ProgressIndicator } from './ui/progress-bar'
 import { Separator } from './ui/separator'
+
+dayjs.locale(ptBR)
 
 interface WeeklySummaryProps {
 	summary: Awaited<ReturnType<typeof getWeekSummary>>['summary']
@@ -28,10 +31,12 @@ export function WeeklySummary({ summary }: WeeklySummaryProps) {
 					</span>
 				</div>
 
-				<Link href="/?create-goal=true" className={button({ size: 'sm' })}>
-					<Plus className="size-4" />
-					Cadastrar meta
-				</Link>
+				<DialogTrigger asChild>
+					<Button size="sm">
+						<Plus className="size-4" />
+						Cadastrar meta
+					</Button>
+				</DialogTrigger>
 			</div>
 
 			<div className="flex flex-col gap-3">

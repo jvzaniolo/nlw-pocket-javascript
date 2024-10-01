@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter_Tight } from 'next/font/google'
 import { Suspense } from 'react'
 import { CreateGoalDialog } from '#src/components/create-goal-dialog'
+import { Dialog } from '#src/components/ui/dialog'
 import { registerGoal } from './actions'
 
 const inter_tight = Inter_Tight({
@@ -25,10 +26,10 @@ export default function RootLayout({
 	return (
 		<html lang="pt-BR" className={`${inter_tight.variable}`}>
 			<body className="flex min-h-dvh flex-col bg-zinc-950 text-zinc-50">
-				{children}
-				<Suspense>
+				<Dialog>
+					{children}
 					<CreateGoalDialog action={registerGoal} />
-				</Suspense>
+				</Dialog>
 			</body>
 		</html>
 	)
