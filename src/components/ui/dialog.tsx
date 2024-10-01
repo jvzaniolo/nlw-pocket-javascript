@@ -17,7 +17,7 @@ export function DialogOverlay(props: DialogPrimitive.DialogOverlayProps) {
 	return (
 		<DialogPrimitive.DialogOverlay
 			{...props}
-			className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm"
+			className="fixed inset-0 z-40 animate-overlay-show bg-black/40 backdrop-blur-sm"
 		/>
 	)
 }
@@ -29,7 +29,7 @@ export function DialogContent(props: DialogPrimitive.DialogContentProps) {
 
 			<DialogPrimitive.DialogContent
 				{...props}
-				className="fixed top-0 right-0 bottom-0 z-50 h-screen w-[400px] border-zinc-900 border-l bg-zinc-950 p-8"
+				className="fixed top-0 right-0 bottom-0 z-50 h-screen w-[400px] animate-content-show border-zinc-900 border-l bg-zinc-950 p-8"
 			/>
 		</>
 	)
