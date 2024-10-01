@@ -13,10 +13,7 @@ export async function registerGoal(state: unknown, formData: FormData) {
 
 	const { title, desiredWeeklyFrequency } = createGoalSchema.parse(Object.fromEntries(formData))
 
-	await createGoal({
-		title,
-		desiredWeeklyFrequency,
-	})
+	await createGoal({ title, desiredWeeklyFrequency })
 
 	revalidatePath('/')
 	redirect('/')
