@@ -2,9 +2,6 @@
 	"name": "pocket-javascript",
 	"version": "0.1.0",
 	"private": true,
-	"imports": {
-		"#src/*": "./src/*"
-	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

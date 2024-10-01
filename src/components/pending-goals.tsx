@@ -1,7 +1,7 @@
+import { createGoalCompletion } from '@/data/functions/create-goal-completion'
+import { getWeekPendingGoals } from '@/data/functions/get-week-pending-goals'
 import { Loader, Plus } from 'lucide-react'
 import { revalidatePath } from 'next/cache'
-import { createGoalCompletion } from '#src/data/functions/create-goal-completion'
-import { getWeekPendingGoals } from '#src/data/functions/get-week-pending-goals'
 import { OutlineButton } from './ui/outline-button'
 
 export async function PendingGoals() {

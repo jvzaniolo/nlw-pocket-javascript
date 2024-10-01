@@ -1,9 +1,9 @@
 'use server'
 
+import { createGoal } from '@/data/functions/create-goal'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
-import { createGoal } from '#src/data/functions/create-goal'
 
 export async function registerGoal(state: unknown, formData: FormData) {
 	const createGoalSchema = z.object({

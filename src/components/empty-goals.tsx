@@ -1,10 +1,10 @@
+import { Button } from '@/components/ui/button'
+import { DialogTrigger } from '@/components/ui/dialog'
 import { Plus } from 'lucide-react'
 import Image from 'next/image'
-import { Button } from '#src/components/ui/button'
-import { DialogTrigger } from '#src/components/ui/dialog'
-
-import illustrationImg from '#src/assets/images/illustration_lets-start.png'
 import { InOrbitLogo } from './in-orbit-logo'
+
+import illustrationImg from '@/assets/images/illustration_lets-start.png'
 
 export function EmptyGoals() {
 	return (

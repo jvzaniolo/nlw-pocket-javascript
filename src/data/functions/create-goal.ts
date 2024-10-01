@@ -1,5 +1,5 @@
-import { db } from '#src/db/drizzle'
-import { goals } from '#src/db/schema'
+import { db } from '@/db/drizzle'
+import { goals } from '@/db/schema'
 
 interface CreateGoalRequest {
 	title: string

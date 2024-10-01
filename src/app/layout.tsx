@@ -1,9 +1,9 @@
 import './globals.css'
 
+import { CreateGoalDialog } from '@/components/create-goal-dialog'
+import { Dialog } from '@/components/ui/dialog'
 import type { Metadata } from 'next'
 import { Inter_Tight } from 'next/font/google'
-import { CreateGoalDialog } from '#src/components/create-goal-dialog'
-import { Dialog } from '#src/components/ui/dialog'
 import { registerGoal } from './actions'
 
 const inter_tight = Inter_Tight({

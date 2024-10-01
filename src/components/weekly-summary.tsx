@@ -1,7 +1,7 @@
+import type { getWeekSummary } from '@/data/functions/get-week-summary'
 import dayjs from 'dayjs'
 import ptBR from 'dayjs/locale/pt-br'
 import { CheckCircle2, Plus } from 'lucide-react'
-import type { getWeekSummary } from '#src/data/functions/get-week-summary'
 import { InOrbitIcon } from './in-orbit-icon'
 import { PendingGoals } from './pending-goals'
 import { Button } from './ui/button'
