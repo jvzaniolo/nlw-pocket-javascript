@@ -13,15 +13,19 @@ Desenvolvido com Next.js, React 19, React Server Components (RSC), Server Action
   ```
   docker compose up -d
   ```
-3. Instale as dependências
+3. Adicione as chaves ambiente
+  ```
+  cp .env.example .env
+  ```
+4. Instale as dependências
   ```
   npm install
   ```
-4. Inicie o projeto em modo de desenvolvimento
+5. Inicie o projeto em modo de desenvolvimento
   ```
   npm run dev
   ```
-4. Abra o aplicativo no seu navegador
+6. Abra o aplicativo no seu navegador
   ```
   http://localhost:3000
   ```
