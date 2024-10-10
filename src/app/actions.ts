@@ -16,5 +16,4 @@ export async function registerGoal(state: unknown, formData: FormData) {
 	await createGoal({ title, desiredWeeklyFrequency })
 
 	revalidatePath('/')
-	redirect('/')
 }

@@ -1,9 +1,8 @@
-import { sql } from '@vercel/postgres'
 import dayjs from 'dayjs'
-import { db } from './drizzle'
+import { client, db } from './drizzle'
 import { goalCompletions, goals } from './schema'
 
-async function seed() {
+async function main() {
 	await db.delete(goalCompletions)
 	await db.delete(goals)
 
@@ -24,10 +23,10 @@ async function seed() {
 	])
 }
 
-seed()
-	.then(() => {
-		console.log('🌱 Database seeded successfully!')
+main()
+	.catch((error) => {
+		console.error(error)
 	})
 	.finally(() => {
-		sql.end()
+		client.end()
 	})
