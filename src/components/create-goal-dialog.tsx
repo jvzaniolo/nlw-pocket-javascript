@@ -13,7 +13,7 @@ export function CreateGoalDialog({
 }: {
 	action: (state: unknown, formData: FormData) => void
 }) {
-	const [state, formAction, isPending] = useActionState(action, null, '/')
+	const [state, formAction, isPending] = useActionState(action, null)
 
 	return (
 		<DialogContent>
