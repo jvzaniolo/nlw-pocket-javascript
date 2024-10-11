@@ -1,10 +1,17 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress'
 
 export function Progress(props: ProgressPrimitive.ProgressProps) {
-	return <ProgressPrimitive.Progress {...props} className="h-2 rounded-full bg-zinc-900" />
+	return (
+		<ProgressPrimitive.Progress
+			{...props}
+			className="h-2 rounded-full bg-zinc-900"
+		/>
+	)
 }
 
-export function ProgressIndicator(props: ProgressPrimitive.ProgressIndicatorProps) {
+export function ProgressIndicator(
+	props: ProgressPrimitive.ProgressIndicatorProps
+) {
 	return (
 		<ProgressPrimitive.Indicator
 			{...props}

@@ -11,7 +11,8 @@ async function main() {
 		.insert(users)
 		.values({
 			email: 'joao@gmail.com',
-			passwordHash: '$2b$10$V5Xe0Jm4l9t1Vv8e7Qz1QeHj8Z9N5y1c9v8zJL7rQ8uZwWd4jG6Z2',
+			passwordHash:
+				'$2b$10$V5Xe0Jm4l9t1Vv8e7Qz1QeHj8Z9N5y1c9v8zJL7rQ8uZwWd4jG6Z2',
 		})
 		.returning({ id: users.id })
 

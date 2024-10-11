@@ -36,10 +36,14 @@ export function DialogContent(props: DialogPrimitive.DialogContentProps) {
 }
 
 export function DialogTitle(props: DialogPrimitive.DialogTitleProps) {
-	return <DialogPrimitive.DialogTitle {...props} className="font-semibold text-lg" />
+	return (
+		<DialogPrimitive.DialogTitle {...props} className="font-semibold text-lg" />
+	)
 }
 
-export function DialogDescription(props: DialogPrimitive.DialogDescriptionProps) {
+export function DialogDescription(
+	props: DialogPrimitive.DialogDescriptionProps
+) {
 	return (
 		<DialogPrimitive.DialogDescription
 			{...props}

@@ -2,7 +2,12 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import { CheckCircle2, Circle } from 'lucide-react'
 
 export function RadioGroup(props: RadioGroupPrimitive.RadioGroupProps) {
-	return <RadioGroupPrimitive.RadioGroup {...props} className="flex flex-col gap-2" />
+	return (
+		<RadioGroupPrimitive.RadioGroup
+			{...props}
+			className="flex flex-col gap-2"
+		/>
+	)
 }
 
 export function RadioGroupItem(props: RadioGroupPrimitive.RadioGroupItemProps) {

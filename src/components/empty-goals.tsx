@@ -16,7 +16,8 @@ export function EmptyGoals() {
 			<Image src={illustrationImg} alt="" className="mb-8" />
 
 			<p className="mb-5 text-center text-zinc-300">
-				Você ainda não cadastrou nenhuma meta, que tal cadastrar uma agora mesmo?
+				Você ainda não cadastrou nenhuma meta, que tal cadastrar uma agora
+				mesmo?
 			</p>
 
 			<DialogTrigger asChild>

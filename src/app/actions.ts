@@ -11,7 +11,9 @@ export async function registerGoal(state: unknown, formData: FormData) {
 		desiredWeeklyFrequency: z.coerce.number().min(1).max(7),
 	})
 
-	const { title, desiredWeeklyFrequency } = createGoalSchema.parse(Object.fromEntries(formData))
+	const { title, desiredWeeklyFrequency } = createGoalSchema.parse(
+		Object.fromEntries(formData)
+	)
 
 	await createGoal({ title, desiredWeeklyFrequency })
 

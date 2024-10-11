@@ -6,7 +6,8 @@ const button = tv({
 
 	variants: {
 		variant: {
-			primary: 'bg-violet-500 text-violet-50 hover:bg-violet-600 ring-violet-500',
+			primary:
+				'bg-violet-500 text-violet-50 hover:bg-violet-600 ring-violet-500',
 			secondary: 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 ring-zinc-900',
 		},
 
@@ -26,7 +27,13 @@ type ButtonProps = ComponentProps<'button'> & VariantProps<typeof button>
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, ...props }, ref) => {
-		return <button {...props} ref={ref} className={button({ variant, size, className })} />
+		return (
+			<button
+				{...props}
+				ref={ref}
+				className={button({ variant, size, className })}
+			/>
+		)
 	}
 )
 

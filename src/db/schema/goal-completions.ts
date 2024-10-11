@@ -9,5 +9,7 @@ export const goalCompletions = pgTable('goal_completions', {
 	goalId: text('goal_id')
 		.references(() => goals.id, { onDelete: 'cascade' })
 		.notNull(),
-	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+	createdAt: timestamp('created_at', { withTimezone: true })
+		.notNull()
+		.defaultNow(),
 })

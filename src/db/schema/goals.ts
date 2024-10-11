@@ -13,5 +13,7 @@ export const goals = pgTable('goals', {
 			onDelete: 'cascade',
 		})
 		.notNull(),
-	createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+	createdAt: timestamp('created_at', { withTimezone: true })
+		.notNull()
+		.defaultNow(),
 })
