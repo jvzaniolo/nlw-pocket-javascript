@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbo",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
@@ -19,9 +19,11 @@
 		"@radix-ui/react-progress": "^1.1.0",
 		"@radix-ui/react-radio-group": "^1.2.0",
 		"@tailwindcss/postcss": "^4.0.0-alpha.25",
+		"bcrypt": "^5.1.1",
 		"dayjs": "^1.11.13",
 		"dotenv": "^16.4.5",
 		"drizzle-orm": "^0.33.0",
+		"jose": "^5.9.3",
 		"lucide-react": "^0.446.0",
 		"next": "15.0.0-rc.0",
 		"postgres": "^3.4.4",
@@ -34,6 +36,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.2",
+		"@types/bcrypt": "^5.0.2",
 		"@types/node": "^20",
 		"@types/react": "^18",
 		"@types/react-dom": "^18",

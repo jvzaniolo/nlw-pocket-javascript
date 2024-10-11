@@ -1,5 +1,6 @@
 import { db } from '@/db/drizzle'
 import { goalCompletions, goals } from '@/db/schema'
+import { verifySession } from '@/lib/session'
 import dayjs from 'dayjs'
 import { and, count, eq, gte, lte } from 'drizzle-orm'
 import { sql } from 'drizzle-orm'
@@ -8,7 +9,11 @@ interface CreateGoalCompletionRequest {
 	goalId: string
 }
 
-export async function createGoalCompletion({ goalId }: CreateGoalCompletionRequest) {
+export async function createGoalCompletion({
+	goalId,
+}: CreateGoalCompletionRequest) {
+	const session = await verifySession()
+
 	const firstDayOfWeek = dayjs().startOf('week').toDate()
 	const lastDayOfWeek = dayjs().endOf('week').toDate()
 
@@ -39,7 +44,7 @@ export async function createGoalCompletion({ goalId }: CreateGoalCompletionReque
 		})
 		.from(goals)
 		.leftJoin(goalCompletionCounts, eq(goalCompletionCounts.goalId, goals.id))
-		.where(eq(goals.id, goalId))
+		.where(and(eq(goals.id, goalId), eq(goals.userId, session.userId)))
 		.limit(1)
 
 	const { completionCount, desiredWeeklyFrequency } = result[0]
@@ -48,7 +53,10 @@ export async function createGoalCompletion({ goalId }: CreateGoalCompletionReque
 		throw new Error('Goal already completed this week!')
 	}
 
-	const insertResult = await db.insert(goalCompletions).values({ goalId }).returning()
+	const insertResult = await db
+		.insert(goalCompletions)
+		.values({ goalId })
+		.returning()
 	const goalCompletion = insertResult[0]
 
 	return {

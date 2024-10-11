@@ -1,7 +1,12 @@
 import { db } from '@/db/drizzle'
 import { goals } from '@/db/schema'
-import { eq } from 'drizzle-orm'
+import { verifySession } from '@/lib/session'
+import { and, eq } from 'drizzle-orm'
 
 export async function deleteGoal({ goalId }: { goalId: string }) {
-	await db.delete(goals).where(eq(goals.id, goalId))
+	const session = await verifySession()
+
+	await db
+		.delete(goals)
+		.where(and(eq(goals.id, goalId), eq(goals.userId, session.userId)))
 }

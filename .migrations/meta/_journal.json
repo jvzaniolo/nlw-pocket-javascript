@@ -15,6 +15,20 @@
       "when": 1727821226732,
       "tag": "0001_icy_pandemic",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1728603755173,
+      "tag": "0002_flaky_union_jack",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1728604982498,
+      "tag": "0003_misty_sleeper",
+      "breakpoints": true
     }
   ]
 }
