@@ -4,15 +4,14 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Link from 'next/link'
-import { useActionState } from 'react'
-import { login } from './actions'
 
 export default function SingUp() {
-	const [formState, formAction, isPending] = useActionState(login, undefined)
+	// TODO: track action state
 
 	return (
 		<div className="mx-auto grid w-full max-w-md grow place-items-center px-4 py-8">
-			<form action={formAction} className="w-full space-y-4">
+			{/* TODO: login action */}
+			<form action="" className="w-full space-y-4">
 				<h1 className="mb-2 text-2xl">Gerencie suas metas!</h1>
 				<p className="mb-8 text-sm text-zinc-400">
 					Crie sua conta para continuar
@@ -28,9 +27,7 @@ export default function SingUp() {
 						className="w-full"
 						required
 					/>
-					{formState?.errors?.email && (
-						<p className="text-red-500 text-sm">{formState.errors.email}</p>
-					)}
+					{/* TODO: Display error message */}
 				</div>
 
 				<div>
@@ -44,18 +41,13 @@ export default function SingUp() {
 						required
 						minLength={6}
 					/>
-					{formState?.errors?.password && (
-						<p className="text-red-500 text-sm">{formState.errors.password}</p>
-					)}
+					{/* TODO: Display error message */}
 				</div>
 
-				{formState?.message && (
-					<p className="text-red-500 text-sm">{formState.message}</p>
-				)}
+				{/* TODO: Display error message */}
 
-				<Button className="mt-8 w-full" disabled={isPending}>
-					{isPending ? 'Entrando...' : 'Entrar'}
-				</Button>
+				{/* TODO: Disable the button if is submitting form */}
+				<Button className="mt-8 w-full">Entrar</Button>
 
 				<p className="flex justify-center">
 					<Link href="/sign-up" className=" text-violet-400">

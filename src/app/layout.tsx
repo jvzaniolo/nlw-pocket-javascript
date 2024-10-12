@@ -26,12 +26,12 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	const cookie = cookies().get('session')?.value
+	const cookieSession = cookies().get('session')?.value
 
 	return (
 		<html lang="pt-BR" className={`${inter.variable}`}>
 			<body className="flex min-h-dvh flex-col bg-zinc-950 text-zinc-50">
-				{cookie && (
+				{cookieSession && (
 					<header className="mx-auto w-full max-w-lg px-5 py-10">
 						<form
 							action={async () => {
