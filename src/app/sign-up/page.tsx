@@ -1,16 +1,17 @@
-'use client'
-
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 export default function SingUp() {
-	// TODO: track action state
+	async function signUp() {
+		'use server'
+		// TODO: handle sign up action
+		console.log('Sign up Server Action')
+	}
 
 	return (
 		<div className="mx-auto grid w-full max-w-md grow place-items-center px-4 py-8">
-			{/* TODO: SignUp action */}
-			<form action="" className="w-full space-y-4">
+			<form action={signUp} className="w-full space-y-4">
 				<h1 className="mb-2 text-2xl">Crie sua conta para continuar!</h1>
 				<p className="mb-8 text-sm text-zinc-400">
 					Torne o seu dia a dia mais fácil e produtivo.
@@ -24,7 +25,6 @@ export default function SingUp() {
 						id="email"
 						placeholder="exemplo@email.com"
 						className="w-full"
-						required
 					/>
 					{/* TODO: Display error message */}
 				</div>
@@ -37,8 +37,6 @@ export default function SingUp() {
 						id="password"
 						placeholder="*******"
 						className="w-full"
-						required
-						minLength={6}
 					/>
 					{/* TODO: Display error message */}
 				</div>

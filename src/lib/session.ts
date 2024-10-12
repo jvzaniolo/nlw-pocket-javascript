@@ -38,3 +38,5 @@ export async function createSession(userId: string) {
 export async function verifySession() {
 	// TODO: Get the session token from the cookie and return the userId
 }
+
+export function destroySession() {}
