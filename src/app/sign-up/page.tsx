@@ -12,9 +12,9 @@ export default function SingUp() {
 	return (
 		<div className="mx-auto grid w-full max-w-md grow place-items-center px-4 py-8">
 			<form action={formAction} className="w-full space-y-4">
-				<h1 className="mb-2 text-2xl">Gerencie suas metas!</h1>
+				<h1 className="mb-2 text-2xl">Crie sua conta para continuar!</h1>
 				<p className="mb-8 text-sm text-zinc-400">
-					Crie sua conta para continuar
+					Torne o seu dia a dia mais fácil e produtivo.
 				</p>
 
 				<div>
