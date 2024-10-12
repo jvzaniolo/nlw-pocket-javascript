@@ -1,5 +1,7 @@
 import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 type SessionPayload = {
 	userId: string
@@ -30,13 +32,28 @@ export async function decrypt(session: string | undefined = '') {
 
 export async function createSession(userId: string) {
 	const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
-	const session = await encrypt({ userId, expiresAt })
+	const token = await encrypt({ userId, expiresAt })
 
-	// TODO: Create a secure cookie with the session token
+	cookies().set('session', token, {
+		httpOnly: true,
+		secure: true,
+		sameSite: 'lax',
+		expires: expiresAt,
+		path: '/',
+	})
 }
 
 export async function verifySession() {
-	// TODO: Get the session token from the cookie and return the userId
+	const session = cookies().get('session')?.value
+	const payload = (await decrypt(session)) as SessionPayload | undefined
+
+	if (!payload?.userId) {
+		redirect('/login')
+	}
+
+	return { userId: payload.userId }
 }
 
-export function destroySession() {}
+export function destroySession() {
+	cookies().delete('session')
+}
