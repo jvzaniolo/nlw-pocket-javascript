@@ -3,7 +3,7 @@ import './globals.css'
 import { CreateGoalDialog } from '@/components/create-goal-dialog'
 import { Dialog } from '@/components/ui/dialog'
 import { OutlineButton } from '@/components/ui/outline-button'
-import { deleteSession } from '@/lib/session'
+import { destroySession } from '@/lib/session'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { cookies } from 'next/headers'
@@ -36,7 +36,7 @@ export default function RootLayout({
 						<form
 							action={async () => {
 								'use server'
-								deleteSession()
+								destroySession()
 								redirect('/login')
 							}}
 							className="flex justify-end"
