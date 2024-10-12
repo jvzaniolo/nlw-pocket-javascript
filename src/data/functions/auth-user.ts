@@ -12,19 +12,11 @@ export async function authUser({
 }) {
 	const [user] = await db.select().from(users).where(eq(users.email, email))
 
-	if (!user) {
-		return {
-			message: 'E-mail ou senha incorretos.',
-		}
-	}
+	if (!user) return null
 
 	const matchPasswords = await bcrypt.compare(password, user.passwordHash)
 
-	if (!matchPasswords) {
-		return {
-			message: 'E-mail ou senha incorretos.',
-		}
-	}
+	if (!matchPasswords) return null
 
 	return user
 }

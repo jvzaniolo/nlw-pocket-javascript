@@ -3,9 +3,16 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 export default function SingUp() {
-	async function signUp() {
+	async function signUp(formData: FormData) {
 		'use server'
-		// TODO: handle sign up action
+		// TODO: Valide os dados do formulário do usuário com um esquema do zod
+
+		// TODO: Chame a função `createUser` com os dados do formulário
+
+		// TODO: Chame a função `createSession` com o id do usuário
+
+		// TODO: Redirecione o usuário para a página `/`
+
 		console.log('Sign up Server Action')
 	}
 

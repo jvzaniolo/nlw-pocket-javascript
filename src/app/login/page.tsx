@@ -4,15 +4,20 @@ import { Label } from '@/components/ui/label'
 import Link from 'next/link'
 
 export default function SingUp() {
-	async function login() {
+	async function login(formData: FormData) {
 		'use server'
-		// TODO: handle login action
+		// TODO: Valide os dados do formulário do usuário com um esquema do zod
+
+		// TODO: Chame a função `authUser` com os dados do formulário
+
+		// TODO: Chame a função `createSession` com o id do usuário
+
+		// TODO: Redirecione o usuário para a página `/`
 		console.log('Login Server Action')
 	}
 
 	return (
 		<div className="mx-auto grid w-full max-w-md grow place-items-center px-4 py-8">
-			{/* TODO: login action */}
 			<form action={login} className="w-full space-y-4">
 				<h1 className="mb-2 text-2xl">Gerencie suas metas!</h1>
 				<p className="mb-8 text-sm text-zinc-400">
